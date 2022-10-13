@@ -1,4 +1,4 @@
-let total = 0
+let total = []
 let value = 0
 let choice = ""
 
@@ -9,13 +9,15 @@ const numberBtn = document.querySelectorAll("#num")
 const operator = document.querySelectorAll("#operator")
 
 
+
 numberBtn.forEach(button =>{
     button.addEventListener('click' , () =>{
         let value = button.getAttribute('value')
-        result.textContent = value
-        
+        total.push(value)
+        result.textContent = total.join("")
     })
 })
+
 
 operator.forEach(button =>{
     button.addEventListener('click', () =>{
@@ -29,34 +31,28 @@ operator.forEach(button =>{
 
 
 function addition(){
-    total = value + value
-    console.log(total)
-    return total
+
     
 }
 
 function subtraction(){
-    total = value - value
-    return total
-    
+
 }
 
 function multiplication(){
-    total = value * value
-    return total
+
     
 }
 
 function division(){
-    total = value / value
-    return total
+
     
 }
 
 
 function operate(){
     if (choice == "add"){
-        addition()
+        console.log("addition")
     }
     else if(choice == "subtract"){
         subtraction()
@@ -69,7 +65,6 @@ function operate(){
     }
     return total
 }
-
 
 
 
