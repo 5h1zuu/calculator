@@ -3,8 +3,8 @@ let value = 0
 let choice = ""
 
 const result = document.querySelector('.total')
-const clear = document.querySelector('.clear')
-const remove = document.querySelector('.delete')
+const clearBtn = document.querySelector('.clear')
+const removeBtn = document.querySelector('.delete')
 const numberBtn = document.querySelectorAll("#num")
 const operator = document.querySelectorAll("#operator")
 
@@ -26,6 +26,15 @@ operator.forEach(button =>{
     })
 })
 
+clearBtn.addEventListener('click', () =>{
+    result.textContent = 0
+    total = []
+})
+
+removeBtn.addEventListener('click', () =>{
+    total.pop()
+    result.textContent = total.join("")
+})
 
 
 
