@@ -1,6 +1,10 @@
+let num1 = []
+let num2 = []
 let total = []
 let value = 0
 let choice = ""
+let operation = ""
+
 
 const result = document.querySelector('.total')
 const clearBtn = document.querySelector('.clear')
@@ -13,8 +17,8 @@ const operator = document.querySelectorAll("#operator")
 numberBtn.forEach(button =>{
     button.addEventListener('click' , () =>{
         let value = button.getAttribute('value')
-        total.push(value)
-        result.textContent = total.join("")
+        num1.push(value)
+        result.textContent = num1.join("")
     })
 })
 
@@ -22,58 +26,91 @@ numberBtn.forEach(button =>{
 operator.forEach(button =>{
     button.addEventListener('click', () =>{
         let choice = button.getAttribute('value')
-        console.log(choice)
+        if (choice == "add"){
+            addition()
+            console.log(total)
+        }else if (choice == "subtract"){
+            subtraction()
+            console.log(total)
+        }else if (choice == "multiply"){
+            multiplication()
+            console.log(total)
+        }else if (choice == "divide"){
+            division()
+            console.log(total)
+        }else if (choice == "equal"){
+            equal()
+            console.log(total)
+        }
     })
 })
+
+
 
 clearBtn.addEventListener('click', () =>{
     result.textContent = 0
     total = []
+    num1 = []
+    num2 = []
+    choice = ""
 })
 
 removeBtn.addEventListener('click', () =>{
-    total.pop()
-    result.textContent = total.join("")
+    num1.pop()
+    result.textContent = num1.join("")
+ 
 })
 
 
 
 
 function addition(){
-
+    total = parseInt(num1.join(""))
+    console.log(num1)
+    console.log(total)
+    num1 = []
+    operation = "add"
     
 }
 
 function subtraction(){
-
+    total = parseInt(num1.join(""))
+    console.log(num1)
+    console.log(total)
+    num1 = []
+    operation = "subtract"
 }
 
 function multiplication(){
-
+    total = parseInt(num1.join(""))
+    console.log(num1)
+    console.log(total)
+    num1 = []
+    operation = "multiply"
     
 }
 
 function division(){
-
+    total = parseInt(num1.join(""))
+    console.log(num1)
+    console.log(total)
+    num1 = []
+    operation = "divide"
     
 }
 
-
-function operate(){
-    if (choice == "add"){
-        console.log("addition")
+function equal(){
+    if (operation == "add"){
+        total += parseInt(num1.join(""))
     }
-    else if(choice == "subtract"){
-        subtraction()
+    else if (operation == "subtract"){
+        total -= parseInt(num1.join(""))
     }
-    else if(choice == "multiply"){
-        multiplication()
+    else if (operation == "multiply"){
+        total *= parseInt(num1.join(""))
     }
-    else if(choice == "divide"){
-        division()
-    }
-    return total
+    else if (operation == "divide"){
+        total /= parseInt(num1.join(""))
+    } 
 }
-
-
 
