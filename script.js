@@ -99,18 +99,26 @@ function division(){
     
 }
 
+
+
+
 function equal(){
     if (operation == "add"){
         total += parseInt(num1.join(""))
+        result.textContent = total
     }
     else if (operation == "subtract"){
         total -= parseInt(num1.join(""))
+        result.textContent = total
     }
     else if (operation == "multiply"){
         total *= parseInt(num1.join(""))
+        result.textContent = total
     }
     else if (operation == "divide"){
         total /= parseInt(num1.join(""))
+        result.textContent = total
     } 
 }
 
+//store value in a different variable and put value after equal in a different one as well?
