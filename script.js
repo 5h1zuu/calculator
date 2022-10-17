@@ -68,7 +68,7 @@ function noEqual(){
     }
 }
 
-//Function needed to stop overflow with input while loop
+//Function needed to stop overflow with input, while loop
 
 
 function addition(){
@@ -94,21 +94,18 @@ function division(){
 function equal(){
     if (operation == "add"){
         answer = total + parseInt(num1.join(""))
-        answer = [answer.toFixed(10)]
-        Number(answer)
+        answer = parseFloat([answer.toFixed(10)])
         result.textContent = answer
         
     }
     else if (operation == "subtract"){
         answer = total - parseInt(num1.join(""))
-        answer = [answer.toFixed(10)]
-        Number(answer)
+        answer = parseFloat([answer.toFixed(10)])
         result.textContent = answer
     }
     else if (operation == "multiply"){
         answer = total * parseInt(num1.join(""))
-        answer = [answer.toFixed(10)]
-        Number(answer)
+        answer = parseFloat([answer.toFixed(10)])
         result.textContent = answer
     }
     else if (operation == "divide"){
@@ -120,8 +117,7 @@ function equal(){
                 answer = []
                 choice = ""
             }else{
-                answer = [answer.toFixed(10)]
-                Number(answer)
+                answer = parseFloat([answer.toFixed(10)])
                 result.textContent = answer
         } 
     }
