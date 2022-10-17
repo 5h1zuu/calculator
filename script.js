@@ -1,10 +1,9 @@
 let num1 = []
-let answer = ''
+let answer = []
 let total = []
 let value = 0
 let choice = ""
 let operation = ""
-
 
 const result = document.querySelector('.total')
 const clearBtn = document.querySelector('.clear')
@@ -37,7 +36,6 @@ operator.forEach(button =>{
     })
 })
 
-
 clearBtn.addEventListener('click', () =>{
     result.textContent = 0
     total = []
@@ -52,7 +50,6 @@ removeBtn.addEventListener('click', () =>{
     result.textContent = num1.join("")
 })
 
-
 function checkNumber(){
     if (typeof answer == 'number'){
         total = answer;
@@ -62,54 +59,73 @@ function checkNumber(){
     num1 = []
 }
 
+//check if there is second number. function within the equal button
+function noEqual(){
+    if (num1 == []){
+        result.textContent = "Error forgot second number"
+    }else{
+        result.textContent = answer
+    }
+}
+
+//Function needed to stop overflow with input while loop
+
 
 function addition(){
     checkNumber()
     operation = "add"
-    
 }
 
 function subtraction(){
     checkNumber()
     operation = "subtract"
-    
 }
 
 function multiplication(){
     checkNumber()
     operation = "multiply"
-    
 }
 
 function division(){
     checkNumber()
     operation = "divide"
-    
 }
 
 function equal(){
     if (operation == "add"){
         answer = total + parseInt(num1.join(""))
+        answer = [answer.toFixed(10)]
+        Number(answer)
         result.textContent = answer
         
     }
     else if (operation == "subtract"){
-        answer = total
-        answer -= parseInt(num1.join(""))
+        answer = total - parseInt(num1.join(""))
+        answer = [answer.toFixed(10)]
+        Number(answer)
         result.textContent = answer
     }
     else if (operation == "multiply"){
-        answer = total
-        answer *= parseInt(num1.join(""))
+        answer = total * parseInt(num1.join(""))
+        answer = [answer.toFixed(10)]
+        Number(answer)
         result.textContent = answer
     }
     else if (operation == "divide"){
-        answer = total
-        answer /= parseInt(num1.join(""))
-        result.textContent = answer
-    } 
+        answer = total / parseInt(num1.join(""))
+        if (answer == "Infinity"){
+            result.textContent = "Error cannot perform that action"
+                total = []
+                num1 = []
+                answer = []
+                choice = ""
+            }else{
+                answer = [answer.toFixed(10)]
+                Number(answer)
+                result.textContent = answer
+        } 
+    }
 }
 
-//store value in a different variable and put value after equal in a different one as well?
-//if num2 === number;
-//run the function operator
+
+
