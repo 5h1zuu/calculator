@@ -4,6 +4,7 @@ let total = []
 let value = 0
 let choice = ""
 let operation = ""
+let point = 0
 
 const result = document.querySelector('.total')
 const clearBtn = document.querySelector('.clear')
@@ -38,10 +39,10 @@ operator.forEach(button =>{
 })
 
 decimal.addEventListener('click', () =>{
-    checkDecimal()
     num1.push(".")
+    checkDecimal()
     result.textContent = num1.join("")
-    //only 1 decimal allowed if statement here
+    point = 1
 })
 
 clearBtn.addEventListener('click', () =>{
@@ -50,15 +51,18 @@ clearBtn.addEventListener('click', () =>{
     num1 = []
     answer = []
     choice = ""
+    point = 0
 })
 
 removeBtn.addEventListener('click', () =>{
     num1.pop()
+    point = 0
     result.textContent = num1.join("")
 })
 
 function checkDecimal(){
-    if(num1.includes(".")){
+    if(point > 0){
+        console.log("more than 1 decimal point")    
         num1.pop()
     }
 }
@@ -71,6 +75,7 @@ function checkNumber(){
         total = parseFloat(num1.join(""))        
     }
     num1 = []
+    point = 0
 }
 
 function noEqual(){
@@ -80,6 +85,7 @@ function noEqual(){
         num1 = []
         answer = []
         choice = ""
+        point = 0
     }
 }
 
@@ -90,27 +96,37 @@ function getNumberLength(){
         num1 = []
         answer = []
         choice = ""
+        point = 0
     }
 }
+
+
+//change logic later to automatically calculate the answer within the function instead of doing it when the equal button is pressed
+
+
 
 function addition(){
     checkNumber()
     operation = "add"
+    point = 0
 }
 
 function subtraction(){
     checkNumber()
     operation = "subtract"
+    point = 0
 }
 
 function multiplication(){
     checkNumber()
     operation = "multiply"
+    point = 0
 }
 
 function division(){
     checkNumber()
     operation = "divide"
+    point = 0
 }
 
 function equal(){
