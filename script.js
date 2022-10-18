@@ -44,7 +44,6 @@ clearBtn.addEventListener('click', () =>{
     choice = ""
 })
 
-//fix this button to remove number
 removeBtn.addEventListener('click', () =>{
     num1.pop()
     result.textContent = num1.join("")
@@ -61,14 +60,16 @@ function checkNumber(){
 
 //check if there is second number. function within the equal button
 function noEqual(){
-    if (num1 == []){
-        result.textContent = "Error forgot second number"
-    }else{
-        result.textContent = answer
+    if (num1.length === 0){
+        result.textContent = "ERROR RETRY"
     }
 }
 
+
 //Function needed to stop overflow with input, while loop
+function getNumberLength(){
+
+}
 
 
 function addition(){
@@ -96,17 +97,20 @@ function equal(){
         answer = total + parseInt(num1.join(""))
         answer = parseFloat([answer.toFixed(10)])
         result.textContent = answer
+        noEqual()
         
     }
     else if (operation == "subtract"){
         answer = total - parseInt(num1.join(""))
         answer = parseFloat([answer.toFixed(10)])
         result.textContent = answer
+        noEqual()
     }
     else if (operation == "multiply"){
         answer = total * parseInt(num1.join(""))
         answer = parseFloat([answer.toFixed(10)])
         result.textContent = answer
+        noEqual()
     }
     else if (operation == "divide"){
         answer = total / parseInt(num1.join(""))
@@ -119,6 +123,7 @@ function equal(){
             }else{
                 answer = parseFloat([answer.toFixed(10)])
                 result.textContent = answer
+                noEqual()
         } 
     }
 }
