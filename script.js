@@ -10,6 +10,7 @@ const clearBtn = document.querySelector('.clear')
 const removeBtn = document.querySelector('.delete')
 const numberBtn = document.querySelectorAll("#num")
 const operator = document.querySelectorAll("#operator")
+const decimal = document.querySelector("#decimal")
 
 numberBtn.forEach(button =>{
     button.addEventListener('click' , () =>{
@@ -36,6 +37,12 @@ operator.forEach(button =>{
     })
 })
 
+decimal.addEventListener('click', () =>{
+    num1.push(".")
+    result.textContent = num1.join("")
+    //only 1 decimal allowed if statement here
+})
+
 clearBtn.addEventListener('click', () =>{
     result.textContent = 0
     total = []
@@ -53,24 +60,31 @@ function checkNumber(){
     if (typeof answer == 'number'){
         total = answer;
     }else{
-        total = parseInt(num1.join(""))
+        getNumberLength()
+        total = parseFloat(num1.join(""))        
     }
     num1 = []
 }
 
-//check if there is second number. function within the equal button
 function noEqual(){
     if (num1.length === 0){
         result.textContent = "ERROR RETRY"
+        total = []
+        num1 = []
+        answer = []
+        choice = ""
     }
 }
 
-
-//Function needed to stop overflow with input, while loop
 function getNumberLength(){
-
+    if(num1.length > 16){
+        result.textContent = "TOO BIG OF A NUMBER"
+        total = []
+        num1 = []
+        answer = []
+        choice = ""
+    }
 }
-
 
 function addition(){
     checkNumber()
@@ -94,26 +108,29 @@ function division(){
 
 function equal(){
     if (operation == "add"){
-        answer = total + parseInt(num1.join(""))
+        answer = total + parseFloat(num1.join(""))
         answer = parseFloat([answer.toFixed(10)])
         result.textContent = answer
+        getNumberLength()
         noEqual()
         
     }
     else if (operation == "subtract"){
-        answer = total - parseInt(num1.join(""))
+        answer = total - parseFloat(num1.join(""))
         answer = parseFloat([answer.toFixed(10)])
         result.textContent = answer
+        getNumberLength()
         noEqual()
     }
     else if (operation == "multiply"){
-        answer = total * parseInt(num1.join(""))
+        answer = total * parseFloat(num1.join(""))
         answer = parseFloat([answer.toFixed(10)])
         result.textContent = answer
+        getNumberLength()
         noEqual()
     }
     else if (operation == "divide"){
-        answer = total / parseInt(num1.join(""))
+        answer = total / parseFloat(num1.join(""))
         if (answer == "Infinity"){
             result.textContent = "Error cannot perform that action"
                 total = []
@@ -123,6 +140,7 @@ function equal(){
             }else{
                 answer = parseFloat([answer.toFixed(10)])
                 result.textContent = answer
+                getNumberLength()
                 noEqual()
         } 
     }
